@@ -165,8 +165,8 @@ export default {
         return;
       }
 
-      const checked = args[0]
-      const event = args[1]
+      const checked = args[0];
+      const event = args[1];
 
       let value = [];
       const optionValue = option[this.keys.value] || option;
