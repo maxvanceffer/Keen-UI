@@ -18,7 +18,7 @@
         :disabled="disabled || option[keys.disabled]"
         :name="name || option[keys.name]"
         @blur="onBlur"
-        @change="onChange(arguments, option)"
+        @change="onChange($event, option)"
         @focus="onFocus"
         >{{ option[keys.label] || option }}</ui-checkbox
       >
@@ -160,13 +160,10 @@ export default {
       this.$emit("blur", e);
     },
 
-    onChange(args, option) {
+    onChange(checked, option) {
       if (this.ignoreChange) {
         return;
       }
-
-      const checked = args[0];
-      const e = args[1];
 
       let value = [];
       const optionValue = option[this.keys.value] || option;
@@ -181,7 +178,7 @@ export default {
       }
 
       this.$emit("update:modelValue", value);
-      this.$emit("change", value, e);
+      this.$emit("change", value);
     },
   },
 };
